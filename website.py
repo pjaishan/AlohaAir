@@ -57,7 +57,7 @@ def main():
 
     st.pydeck_chart(
         pdk.Deck(
-            map_style='mapbox://styles/mapbox/streets-v11',
+            map_style='road',
             initial_view_state=pdk.ViewState(
                 latitude=locations['latitude'].mean(),
                 longitude=locations['longitude'].mean(),
