@@ -31,7 +31,7 @@ def main():
 
     # Update the locations DataFrame with the selected timepoint's AQ data
     locations['pm25'] = [aq[timepoint][i][hour] for i in range(len(locations))]
-    locations['pm25'] = locations['pm25'].round(2)
+    locations['pm25_rounded'] = locations['pm25'].round(2).astype(str) + ' µg/m³'
 
     def on_click(info):
         if info is not None and info.object is not None:
@@ -80,7 +80,7 @@ def main():
                 "html": "<b>Name:</b> {location}<br/>"
                         "<b>Latitude:</b> {latitude}<br/>"
                         "<b>Longitude:</b> {longitude}<br/>"
-                        "<b>PM 2.5:</b> {pm25:.2f}<br/>",
+                        "<b>PM 2.5:</b> {pm25_rounded}<br/>",
                 "style": {"color": "white"}
             },
         )
