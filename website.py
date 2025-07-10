@@ -43,15 +43,24 @@ def main():
 
     # Define a function to map PM2.5 values to color (e.g., green to red)
     def pm25_to_color(pm25):
-        if pm25 < 12:
+        if pm25 <= 12:
             # Green
             return [0, 200, 30, 160]
-        elif 12 <= pm25 <= 35:
+        elif 12 < pm25 <= 35.4:
             # Yellow
             return [255, 255, 0, 160]
-        else:
+        elif 35.4 < pm25 <= 55.4:
+            # Orange
+            return [255, 165, 0, 160]
+        elif 55.4 < pm25 <= 150.4:
             # Red
             return [255, 0, 0, 160]
+        elif 150.4 < pm25 <= 250.4:
+            # Purple
+            return [128, 0, 128, 160]
+        else:
+            # Dark Red
+            return [139, 0, 0, 160]
 
     locations['color'] = locations['pm25'].apply(pm25_to_color)
 
