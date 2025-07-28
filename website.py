@@ -23,8 +23,6 @@ def main():
     
     time_difference = start_time - pd.Timestamp('2024-01-01 00:00:00', tz=None)
     timepoint = int(time_difference.total_seconds() / 3600)
-    print(timepoint)
-
 
     selected_location = st.empty()
 
