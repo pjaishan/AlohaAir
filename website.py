@@ -2,32 +2,51 @@ import pandas as pd
 import numpy as np
 import streamlit as st
 import pydeck as pdk
+from streamlit_datetime_picker import date_time_picker
 
 def main():
     locations = pd.read_csv('locations.csv')
-    aq = np.load('pred_aq.npy')
+    aq = np.load('pred_aq_1_week.npy')
 
     st.title("AlohaAir Locations Map")
 
+    datetime_value = date_time_picker("Select Date and Time",
+                                       format ="YYYY-MM-DD hh A",
+                                       minDate=pd.Timestamp('2024-01-01 00:00:00'),
+                                       maxDate=pd.Timestamp('2024-10-05 08:00:00'),
+                                       value=pd.Timestamp('2024-01-01 00:00:00'),
+                                       key='datetime_picker',
+                                       timeUnit='hour')
+
+    start_time = datetime_value.replace(tzinfo=None)
+    end_time = start_time + pd.Timedelta(hours=aq.shape[2] - 1)
+    
+    time_difference = start_time - pd.Timestamp('2024-01-01 00:00:00', tz=None)
+    timepoint = int(time_difference.total_seconds() / 3600)
+    print(timepoint)
+
+
     selected_location = st.empty()
 
-    timepoint = st.slider(
-        "Show timepoint:",
-        min_value=0,
-        max_value=aq.shape[0] - 1,
-        value=0,
-        step=1,
-        key='timepoint'
-    )
+    # timepoint = st.slider(
+    #     "Show timepoint:",
+    #     min_value=0,
+    #     max_value=aq.shape[0] - 1,
+    #     value=0,
+    #     step=1,
+    #     key='timepoint'
+    # )
 
-    hour = st.slider(
+    hour_slider = st.slider(
         "Show hour:",
-        min_value=0,
-        max_value=aq.shape[2] - 1,
-        value=0,
-        step=1,
-        key='hour'
+        min_value=start_time,
+        max_value=end_time,
+        value=start_time,
+        step=pd.Timedelta(hours=1),
+        key='hour',
+        format="MMM Do h A"
     )
+    hour = int((hour_slider - start_time).total_seconds() / 3600)
 
     # Update the locations DataFrame with the selected timepoint's AQ data
     locations['pm25'] = [aq[timepoint][i][hour] for i in range(len(locations))]
