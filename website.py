@@ -13,7 +13,7 @@ def main():
     datetime_value = date_time_picker("Select Date and Time",
                                        format ="YYYY-MM-DD hh A",
                                        minDate=pd.Timestamp('2023-01-01 00:00:00'),
-                                       maxDate=pd.Timestamp('2023-10-05 08:00:00'),
+                                       maxDate=pd.Timestamp('2023-10-06 08:00:00'),
                                        value=pd.Timestamp('2023-01-01 00:00:00'),
                                        key='datetime_picker',
                                        timeUnit='hour')
