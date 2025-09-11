@@ -12,16 +12,16 @@ def main():
 
     datetime_value = date_time_picker("Select Date and Time",
                                        format ="YYYY-MM-DD hh A",
-                                       minDate=pd.Timestamp('2024-01-01 00:00:00'),
-                                       maxDate=pd.Timestamp('2024-10-05 08:00:00'),
-                                       value=pd.Timestamp('2024-01-01 00:00:00'),
+                                       minDate=pd.Timestamp('2023-01-01 00:00:00'),
+                                       maxDate=pd.Timestamp('2023-10-05 08:00:00'),
+                                       value=pd.Timestamp('2023-01-01 00:00:00'),
                                        key='datetime_picker',
                                        timeUnit='hour')
 
     start_time = datetime_value.replace(tzinfo=None)
     end_time = start_time + pd.Timedelta(hours=aq.shape[2] - 1)
     
-    time_difference = start_time - pd.Timestamp('2024-01-01 00:00:00', tz=None)
+    time_difference = start_time - pd.Timestamp('2023-01-01 00:00:00', tz=None)
     timepoint = int(time_difference.total_seconds() / 3600)
 
     selected_location = st.empty()
