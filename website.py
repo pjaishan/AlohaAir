@@ -10,7 +10,7 @@ def main():
 
     st.title("AlohaAir Locations Map")
 
-    datetime_value = date_time_picker("Select Date and Time",
+    datetime_value = date_time_picker("Start Date and Time",
                                        format ="YYYY-MM-DD hh A",
                                        minDate=pd.Timestamp('2023-01-01 00:00:00'),
                                        maxDate=pd.Timestamp('2023-10-06 08:00:00'),
@@ -36,7 +36,7 @@ def main():
     # )
 
     hour_slider = st.slider(
-        "Show hour:",
+        "Show future hour:",
         min_value=start_time,
         max_value=end_time,
         value=start_time,
