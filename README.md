@@ -166,6 +166,11 @@ Future work should expand this application to real-time air quality prediction, 
 
 Further efforts should also market this model to health systems (such as Kaiser Permanente) and the Los Angeles Department of Public Health. In our attempt of this outreach, the reception was positive but non-committal. We still believe that partnering with a large system would be the most efficient course of action.
 
+## Acknowledgements
+Mentors: Bistra Dilkina, PhD, Center for AI in Society, Sam Silva, PhD
+
+Sponsor: USC Center for Sustainability Solutions, Undergraduate Sustainability Grand Challenge Fellowship
+
 ## References
 
 * Bronstein M. (2020). **Temporal Graph Networks**. *Towards Data Science*. [https://towardsdatascience.com/temporal-graph-networks-ab8f327f2efe](https://towardsdatascience.com/temporal-graph-networks-ab8f327f2efe)
